@@ -4,8 +4,9 @@ from data.urls import Urls
 from pages.main_page import MainPage
 import pytest
 import allure
+
 class TestQuestions:
-    @allure.title
+    @allure.title("Проверка ответов в разделе FAQ")
     @pytest.mark.parametrize("faq_item", FAQ_DATA)
     def test_faq_answer(self, driver, faq_item):
         main_page = MainPage(driver)
