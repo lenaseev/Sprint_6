@@ -5,33 +5,33 @@ from locators.main_page_locators import MainPageLocators
 from .base_page import BasePage
 
 class MainPage(BasePage):
-    @allure.step
+    @allure.step("Инициализация главной страницы")
     def __init__(self, driver):
         super().__init__(driver)
         self.locators = MainPageLocators()
 
-    @allure.step
+    @allure.step("Нажать верхнюю кнопку 'Заказать'")
     def click_order_button_above(self):
         self.click(self.locators.ORDER_BUTTON_ABOVE)
 
-    @allure.step
+    @allure.step("Нажать нижнюю кнопку 'Заказать'")
     def click_order_button_down(self):
         self.scroll_to_element(self.locators.ORDER_BUTTON_DOWN)
         self.click(self.locators.ORDER_BUTTON_DOWN)
 
-    @allure.step
+    @allure.step("Нажать кнопку 'Яндекс'")
     def click_yandex_button(self):
         self.click_element_when_clickable(self.locators.YANDEX_BUTTON)
 
-    @allure.step
+    @allure.step("Нажать кнопку 'Самокат'")
     def click_scooter_button(self):
         self.click(self.locators.SCOOTER_BUTTON)
 
-    @allure.step
+    @allure.step("Прокрутить к разделу FAQ")
     def scroll_to_faq_text(self):
         self.scroll_to_element(self.locators.FAQ_TEXT)
 
-    @allure.step
+    @allure.step("Раскрыть вопрос FAQ")
     def expand_question(self, question_text):
         try:
             question_locator = (self.locators.FAQ_QUESTIONS[0],
@@ -43,7 +43,7 @@ class MainPage(BasePage):
             available_questions = [q.text for q in self.find_elements(self.locators.FAQ_QUESTIONS)]
             raise ValueError(f"Вопрос '{question_text}' не найден. Доступные вопросы: {available_questions}")
 
-    @allure.step
+    @allure.step("Получить текст ответа на вопрос")
     def get_answer_text(self, question_text):
         try:
             answer_locator = (self.locators.FAQ_ANSWER[0],

@@ -9,11 +9,11 @@ class Test_Navigation:
 
         main_page = MainPage(driver)
 
-        try:
-            final_url = main_page.click_yandex_and_get_final_url()
-            assert "dzen.ru" in final_url, f"Финальный URL: {final_url}"
-        finally:
-            main_page.close_current_tab()
+        final_url = main_page.click_yandex_and_get_final_url()
+        main_page.close_current_tab()
+
+        assert "dzen.ru" in final_url, f"Финальный URL: {final_url}"
+
     @allure.title("Проверка на переход на главную страницу")
     def test_scooter_button(self, driver):
         # Открытие страницы заказа

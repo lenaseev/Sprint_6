@@ -36,8 +36,6 @@ class BasePage:
         element = self.wait_for_element_visible(locator)
         return element.text
 
-    # def execute_script(self, script, *args):
-    #     return self.driver.execute_script(script, *args)
 
     def get_current_url(self):
         return self.driver.current_url
